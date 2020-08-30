@@ -1,0 +1,49 @@
+package LearnSel;
+
+import org.seleniumhq.*;
+import org.openqa.*;
+import org.openqa.selenium.*;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+public class perfsel {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		
+		
+       
+		System.setProperty("webdriver.chrome.driver", "C:\\Dev\\Tools\\eclipse\\chromedriver.exe");
+		WebDriver driver = new ChromeDriver();
+		 long start = System.currentTimeMillis();
+		 driver.get("https://www.amazon.com");
+		
+				
+		 long finish = System.currentTimeMillis();
+		    long totalTime = finish - start; 
+		    JavascriptExecutor js = (JavascriptExecutor) driver;  
+		    Long loadtime = (Long)(js.executeScript(
+		            "return performance.timing.loadEventEnd - performance.timing.navigationStart")); 
+		  
+		    System.out.println("Page Load Time via API is "+loadtime);
+		    System.out.println("Page Load Time via Javatimer is  - "+totalTime);
+		    
+		    long start1 = System.currentTimeMillis();
+			 driver.get("https://www.amazon.com");
+			
+					
+			 long finish1 = System.currentTimeMillis();
+			    long totalTime1 = finish - start; 
+			 //   JavascriptExecutor js = (JavascriptExecutor) driver;  
+			    Long loadtime1 = (Long)(js.executeScript(
+			            "return performance.timing.loadEventEnd - performance.timing.navigationStart")); 
+			  
+			    System.out.println("Page Load Time via API is "+loadtime1);
+			    System.out.println("Page Load Time via Javatimer is  - "+totalTime1);
+		
+			    
+			    
+		    driver.close();
+	}
+
+}
